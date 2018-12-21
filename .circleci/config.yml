@@ -32,13 +32,12 @@ jobs:
           command: mv config/database.yml.ci config/database.yml
       - restore_cache:
           keys:
-            - gem-cache-v1-{{ .Branch }}dependencies-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run:
           name: execute bundle install
           command: bundle install -j4 --path=vendor/bundle
       - save_cache:
-          keys:
-            - gem-cache-v1-{{ .Branch }}dependencies-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v1-dependencies-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       - run: bin/setup
