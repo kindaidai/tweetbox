@@ -40,7 +40,10 @@ jobs:
           key: gem-cache-v1-dependencies-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - run: bin/setup
+      - run:
+          name: initialize DB
+          command: |
+            bundle exec rails db:create db:migrate RAILS_ENV=test
       - run: mkdir ~/rspec
       - run:
           name: execute RSpec
