@@ -1,0 +1,15 @@
+current directory: /Users/kindaichidai/catal/tweetbox/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+/Users/kindaichidai/.rbenv/versions/2.5.3/bin/ruby -r ./siteconf20181221-42084-1pkuq3n.rb extconf.rb
+creating Makefile
+
+current directory: /Users/kindaichidai/catal/tweetbox/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /Users/kindaichidai/catal/tweetbox/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.bundle
+
+current directory: /Users/kindaichidai/catal/tweetbox/vendor/bundle/ruby/2.5.0/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20181221-42084-1t3kwxf/bindex
