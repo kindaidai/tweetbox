@@ -80,3 +80,5 @@ gem 'rails-i18n'
 # css framework
 # https://github.com/joshuajansen/bulma-rails
 gem 'bulma-rails', '~> 0.7.2'
+
+gem 'rspec_junit_formatter'
