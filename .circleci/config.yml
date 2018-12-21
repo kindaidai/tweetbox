@@ -28,27 +28,27 @@ jobs:
     steps:
       - checkout
       - run:
-        name: set database.yml
-        command: mv config/database.yml.ci config/database.yml
+          name: set database.yml
+          command: mv config/database.yml.ci config/database.yml
       - restore_cache:
-        keys:
-          - gem-cache-v1-{{ .Branch }}dependencies-{{ checksum "Gemfile.lock" }}
+          keys:
+            - gem-cache-v1-{{ .Branch }}dependencies-{{ checksum "Gemfile.lock" }}
       - run:
           name: execute bundle install
           command: bundle install -j4 --path=vendor/bundle
       - save_cache:
-        keys:
-          - gem-cache-v1-{{ .Branch }}dependencies-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+          keys:
+            - gem-cache-v1-{{ .Branch }}dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
       - run: bin/setup
       - run: mkdir ~/rspec
       - run:
-        name: execute RSpec
-        command: |
-          circleci tests glob \
-          "spec/**/*_spec.rb" | \
-          circleci tests split --split-by=timings | \
-          xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+          name: execute RSpec
+          command: |
+            circleci tests glob \
+            "spec/**/*_spec.rb" | \
+            circleci tests split --split-by=timings | \
+            xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
       - store_test_results:
           path: ~/rspec
