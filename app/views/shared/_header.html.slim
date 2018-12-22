@@ -1,10 +1,13 @@
 header
-  nav.navbar.is-black role='navigation' aria-label='main namigation'
-    div.navbar-brand
-      = link_to 'Tweetbox', root_path, { class: 'navbar-item' }
-    div#navbarBasicExample.navbar-menu
-      div.navbar-end
-        div.navbar-item
-          div.buttons
-            = link_to 'Sign up', '#', { class: 'button is-primary' }
-            = link_to 'Log in', '#', { class: 'button is-light' }
+  nav class='navbar is-black is-fixed-top' role="navigation" aria-label="main navigation"
+    div.container
+      div.navbar-brand
+        = link_to 'Tweetbox', root_path, { class: 'navbar-item' }
+      div#navbarBasicExample.navbar-menu
+        div.navbar-end
+          div.navbar-item
+            div.buttons
+              = link_to '#', { class: 'button is-light is-rounded' } do
+                = content_tag :span, '', class: 'icon' do 
+                  = content_tag :i, '', class: 'fab fa-twitter'
+                = content_tag :span, 'ログイン'
