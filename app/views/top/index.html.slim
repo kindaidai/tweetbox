@@ -1,12 +1,12 @@
-main
-  section class='hero is-fullheight'
-    div.hero-body
-      div class='container has-text-centered'
+section class='hero is-fullheight'
+  div.hero-body
+    div class='container has-text-centered'
+      - if logged_in?
+        p ログインしてます
+      -  else
         h1.title Tweetboxを始めよう
-        = link_to '#', { class: 'button is-primary is-rounded' } do
-          = content_tag :span, '新規登録'
-        = link_to '#', { class: 'button is-light is-rounded' } do
+        = link_to auth_at_provider_path(:provider => :twitter), { class: 'button is-info is-rounded' } do
           = content_tag :span, '', class: 'icon' do 
             = content_tag :i, '', class: 'fab fa-twitter'
-          = content_tag :span, 'ログイン'
-        
+          = content_tag :span, 'twitterで始めよう'
+  

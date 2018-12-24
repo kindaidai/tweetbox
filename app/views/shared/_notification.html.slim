@@ -1,0 +1,5 @@
+section.section
+  div.container
+    - flash&.each do |key, message|
+      h1 class="notification is-#{notification_type(key)}"
+        = message

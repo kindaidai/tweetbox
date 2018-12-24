@@ -11,5 +11,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render partial: 'shared/header'
-    = yield
+    main
+      = render partial: 'shared/notification'
+      = yield
     = render partial: 'shared/footer'

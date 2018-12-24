@@ -7,7 +7,12 @@ header
         div.navbar-end
           div.navbar-item
             div.buttons
-              = link_to '#', { class: 'button is-light is-rounded' } do
-                = content_tag :span, '', class: 'icon' do 
-                  = content_tag :i, '', class: 'fab fa-twitter'
-                = content_tag :span, 'ログイン'
+              - if logged_in?
+                p class='button is-info is-rounded'
+                  = '@' + current_user.name
+                = link_to 'ログアウト', signout_path, { class: 'button is-danger is-rounded', method: :delete }
+              - else
+                = link_to auth_at_provider_path(:provider => :twitter), { class: 'button is-info is-rounded' } do
+                  = content_tag :span, '', class: 'icon' do 
+                    = content_tag :i, '', class: 'fab fa-twitter'
+                  = content_tag :span, 'ログイン'

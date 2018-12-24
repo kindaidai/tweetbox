@@ -82,3 +82,6 @@ gem 'rails-i18n'
 gem 'bulma-rails', '~> 0.7.2'
 
 gem 'rspec_junit_formatter'
+
+# for log in
+gem 'sorcery'
