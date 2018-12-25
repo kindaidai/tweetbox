@@ -85,3 +85,5 @@ gem 'rspec_junit_formatter'
 
 # for log in
 gem 'sorcery'
+
+gem 'twitter'
