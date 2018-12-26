@@ -16,16 +16,18 @@ ActiveRecord::Schema.define(version: 2018_12_22_080206) do
     t.integer "user_id", null: false
     t.string "provider", null: false
     t.string "uid", null: false
+    t.string "access_token"
+    t.string "access_token_secret"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "screen_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_users_on_name"
+    t.index ["screen_name"], name: "index_users_on_screen_name"
   end
 
 end

@@ -9,7 +9,7 @@ header
             div.buttons
               - if logged_in?
                 p class='button is-info is-rounded'
-                  = '@' + current_user.name
+                  = '@' + current_user.screen_name
                 = link_to 'ログアウト', signout_path, { class: 'button is-danger is-rounded', method: :delete }
               - else
                 = link_to auth_at_provider_path(:provider => :twitter), { class: 'button is-info is-rounded' } do

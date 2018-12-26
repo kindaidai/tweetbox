@@ -1,10 +1,12 @@
-div.box
-  article.media
-    div.media-content
-      p
-        strong kindaidai
-        small @kindai_dai
-        small 31m
-        br
-        ああああああああああああ
-    = link_to '保存する', '#', { class: 'button is-info is-rounded' }
+- tweets&.each do |tweet|
+  div.box
+    article.media
+      div.media-content
+        p
+          strong
+            = tweet.attrs.dig(:user, :name)
+          small
+            = tweet.attrs.dig(:user, :screen_name)
+          br
+        = tweet.attrs.dig(:text)
+      = link_to '保存する', '#', { class: 'button is-info is-rounded' }

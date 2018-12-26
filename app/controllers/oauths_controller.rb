@@ -10,7 +10,14 @@ class OauthsController < ApplicationController
       redirect_to root_path, notice: 'ログインに成功しました'
     else
       begin
-        @user = create_from(provider)
+        # TODO: イケてないので直したい
+        User.transaction do
+          @user = create_from(provider)
+          @user.authentications.twitter.update!(
+            access_token: access_token.token,
+            access_token_secret: access_token.secret
+          )
+        end
         reset_session
         auto_login(@user)
         redirect_to root_path, notice: 'ログインしました。'
