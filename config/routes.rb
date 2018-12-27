@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   delete 'signout' => 'user_sessions#destroy'
 
   resources :suggested_users, only: [:index]
+  namespace :twitter do
+    resources :followers, only: [:create]
+    resource :follower, only: [:destroy]
+  end
 end

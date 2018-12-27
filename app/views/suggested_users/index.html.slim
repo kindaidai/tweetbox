@@ -11,7 +11,7 @@ section class='hero is-fullheight'
                 = user.name
                 = "@" + user.screen_name
               - if @client.friendship?(current_user.screen_name, user.screen_name)
-                = link_to 'follow', '#', { class: 'button is-info is-rounded' }
+                = link_to 'unfollow', twitter_follower_path(screen_name: user.screen_name), { class: 'button is-rounded', method: :delete }
               - else
-                = link_to 'unfollow', '#', { class: 'button is-rounded' }
+                = link_to 'follow', twitter_followers_path(screen_name: user.screen_name), { class: 'button is-info is-rounded', method: :post }
       = link_to 'タイムラインへGo!!', root_path, { class: 'button is-info is-rounded' }

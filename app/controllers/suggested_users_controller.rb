@@ -7,10 +7,4 @@ class SuggestedUsersController < ApplicationController
     @client = manager.client
     @suggested_users = @client.users(SUGGESTED_USERS)
   end
-
-  private
-
-    def not_authenticated
-      redirect_to root_path, alert: "ログインしてください"
-    end
 end
