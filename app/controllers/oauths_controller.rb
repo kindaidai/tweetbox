@@ -20,7 +20,7 @@ class OauthsController < ApplicationController
         end
         reset_session
         auto_login(@user)
-        redirect_to root_path, notice: 'ログインしました。'
+        redirect_to suggested_users_path
       rescue
         redirect_to root_path, alert: 'ログインに失敗しました'
       end

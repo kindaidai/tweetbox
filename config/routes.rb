@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
   delete 'signout' => 'user_sessions#destroy'
+
+  resources :suggested_users, only: [:index]
 end

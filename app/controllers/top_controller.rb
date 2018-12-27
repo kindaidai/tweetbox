@@ -1,8 +1,8 @@
 class TopController < ApplicationController
   def index
     if logged_in?
-      twitter_client = TwitterManager.new(current_user)
-      @tweets = twitter_client.home_timeline(10)
+      client = TwitterManager.new(current_user).client
+      @tweets = client.home_timeline(count: 10)
     end
   end
 end

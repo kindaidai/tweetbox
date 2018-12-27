@@ -1,4 +1,6 @@
 class TwitterManager
+  attr_reader :client
+
   def initialize(user)
     auth = user.authentications.twitter
 
@@ -8,11 +10,5 @@ class TwitterManager
       config.access_token = auth.access_token
       config.access_token_secret = auth.access_token_secret
     end
-    @user = user
-  end
-
-  def home_timeline(count)
-    screen_name = @user.screen_name
-    @client.home_timeline(count: count)
   end
 end

@@ -14,7 +14,7 @@
 
 FactoryBot.define do
   factory :authentication do
-    user
+    association :user, factory: :user
     provider { 'twitter' }
     uid { Faker::Twitter.user[:id] }
     access_token { 'dummy_access_token' }

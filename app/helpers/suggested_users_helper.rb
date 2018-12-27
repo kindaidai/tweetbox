@@ -1,0 +1,2 @@
+module SuggestedUsersHelper
+end

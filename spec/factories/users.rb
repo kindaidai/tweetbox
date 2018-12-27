@@ -11,5 +11,8 @@
 FactoryBot.define do
   factory :user do
     sequence(:screen_name) { Faker::Twitter.screen_name }
+    after(:create) do |user|
+      create_list(:authentication, 1, :twitter, user: user)
+    end
   end
 end
