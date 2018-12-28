@@ -3,6 +3,7 @@ section class='hero is-fullheight'
     div class='container has-text-centered'
       - if logged_in?
         = render partial: 'tweet', locals: { tweets: @tweets }
+        div#get_tweet_ajax
       -  else
         h1.title Tweetboxを始めよう
         = link_to auth_at_provider_path(:provider => :twitter), { class: 'button is-info is-rounded' } do

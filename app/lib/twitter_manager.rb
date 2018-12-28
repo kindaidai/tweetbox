@@ -13,8 +13,10 @@ class TwitterManager
     @user = user
   end
 
-  def home_timeline(count)
-    tweets = @client.home_timeline(count: count)
+  def home_timeline(count, max_id=nil)
+    params = { count: count }
+    params.store(:max_id, max_id) if max_id.present?
+    tweets = @client.home_timeline(params)
     add_is_created(tweets)
   end
 

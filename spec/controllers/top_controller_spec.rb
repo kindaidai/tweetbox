@@ -11,8 +11,7 @@ RSpec.describe TopController, type: :controller do
 
       before do
         allow(TwitterManager).to receive(:new).and_return(twitter_manager_mock)
-        allow(twitter_manager_mock).to receive(:client).and_return(twitter_client_mock)
-        allow(twitter_client_mock).to receive(:home_timeline).and_return('mock')
+        allow(twitter_manager_mock).to receive(:home_timeline).and_return('mock')
         login_user user
         subject
       end

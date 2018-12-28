@@ -87,3 +87,5 @@ gem 'rspec_junit_formatter'
 gem 'sorcery'
 
 gem 'twitter'
+
+gem "jquery-rails"
