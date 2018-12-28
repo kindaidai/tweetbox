@@ -9,4 +9,7 @@
             = tweet.attrs.dig(:user, :screen_name)
           br
         = tweet.attrs.dig(:text)
-      = link_to '保存する', '#', { class: 'button is-info is-rounded' }
+      - if tweet.instance_variable_get(:@is_created)
+        p class='button is-rounded' 保存済み
+      - else
+        = link_to '保存する', twitter_tweets_path(tweet_id: tweet.attrs[:id]), { class: 'button is-info is-rounded', method: :post }

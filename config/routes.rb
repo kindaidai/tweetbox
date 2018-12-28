@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   namespace :twitter do
     resources :followers, only: [:create]
     resource :follower, only: [:destroy]
+    resources :tweets, only: [:create]
   end
 end

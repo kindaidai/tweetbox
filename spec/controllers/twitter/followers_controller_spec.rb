@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Twitter::FollowersController, type: :controller do
   describe 'POST create' do
-    subject { post :create, params: { screen_name: _params } }
-    let(:_params) { 'dummy_screen_name' }
+    subject { post :create, params: { screen_name: screen_name } }
+    let(:screen_name) { 'dummy_screen_name' }
 
     context 'when user is logged in' do
       let!(:user) { create(:user) }
@@ -29,8 +29,8 @@ RSpec.describe Twitter::FollowersController, type: :controller do
   end
 
   describe 'DELETE destroy' do
-    subject { delete :destroy, params: { screen_name: _params } }
-    let(:_params) { 'dummy_screen_name' }
+    subject { delete :destroy, params: { screen_name: screen_name } }
+    let(:screen_name) { 'dummy_screen_name' }
 
     context 'when user is logged in' do
       let!(:user) { create(:user) }
