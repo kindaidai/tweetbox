@@ -1,0 +1,17 @@
+section class='hero is-fullheight'
+  div.hero-body
+    div class='container has-text-centered'
+      h1 class='title is-2' フォローして始めよう！
+      div.columns
+        - @suggested_users.each do |user|
+          div.column
+            div.box
+              = image_tag user.attrs[:profile_image_url_https]
+              h1 
+                = user.name
+                = "@" + user.screen_name
+              - if @client.friendship?(current_user.screen_name, user.screen_name)
+                = link_to 'unfollow', twitter_follower_path(screen_name: user.screen_name), { class: 'button is-rounded', method: :delete }
+              - else
+                = link_to 'follow', twitter_followers_path(screen_name: user.screen_name), { class: 'button is-info is-rounded', method: :post }
+      = link_to 'タイムラインへGo!!', root_path, { class: 'button is-info is-rounded' }

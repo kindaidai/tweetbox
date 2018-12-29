@@ -22,6 +22,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# See https://github.com/rails/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -63,6 +66,9 @@ group :development do
   gem 'annotate' # https://github.com/ctran/annotate_models
 end
 
+group :test do
+  gem 'rails-controller-testing' # can use render_template in rspec
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -70,3 +76,16 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'seed-fu', '~> 2.3'
 gem 'slim-rails'
 gem 'rails-i18n'
+
+# css framework
+# https://github.com/joshuajansen/bulma-rails
+gem 'bulma-rails', '~> 0.7.2'
+
+gem 'rspec_junit_formatter'
+
+# for log in
+gem 'sorcery'
+
+gem 'twitter'
+
+gem "jquery-rails"

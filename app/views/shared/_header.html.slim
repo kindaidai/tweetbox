@@ -1,0 +1,21 @@
+header
+  nav class='navbar is-black is-fixed-top' role="navigation" aria-label="main navigation"
+    div.container
+      div.navbar-brand
+        = link_to 'Tweetbox', root_path, { class: 'navbar-item' }
+      div#navbarBasicExample.navbar-menu
+        div.navbar-start style='flex-grow: 1; justify-content: center;'
+          div.navbar-item#tweet_load_button
+            = link_to '更新する', root_path, { class: 'button is-info is-rounded' }
+        div.navbar-end
+          div.navbar-item
+            div.buttons
+              - if logged_in?
+                p class='button is-info is-rounded'
+                  = '@' + current_user.screen_name
+                = link_to 'ログアウト', signout_path, { class: 'button is-danger is-rounded', method: :delete }
+              - else
+                = link_to auth_at_provider_path(:provider => :twitter), { class: 'button is-info is-rounded' } do
+                  = content_tag :span, '', class: 'icon' do 
+                    = content_tag :i, '', class: 'fab fa-twitter'
+                  = content_tag :span, 'ログイン'

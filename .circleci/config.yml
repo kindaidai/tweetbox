@@ -1,0 +1,56 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/ruby:2.5.3-browsers
+        environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          DB_PASSWORD: ''
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+
+    working_directory: ~/tweetbox
+
+    steps:
+      - checkout
+      - run:
+          name: set database.yml
+          command: mv config/database.yml.ci config/database.yml
+      - restore_cache:
+          keys:
+            - gem-cache-v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: execute bundle install
+          command: bundle install -j4 --path=vendor/bundle
+      - save_cache:
+          key: gem-cache-v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: initialize DB
+          command: |
+            bundle exec rails db:create db:migrate RAILS_ENV=test
+      - run: mkdir ~/rspec
+      - run:
+          name: execute RSpec
+          command: |
+            circleci tests glob \
+            "spec/**/*_spec.rb" | \
+            circleci tests split --split-by=timings | \
+            xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
+      - store_test_results:
+          path: ~/rspec
