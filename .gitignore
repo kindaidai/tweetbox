@@ -30,3 +30,6 @@
 /config/master.key
 
 .DS_Store
+
+# Ignore ctags file
+tags
